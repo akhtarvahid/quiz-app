@@ -1,0 +1,118 @@
+{
+  "quiz": [
+    {
+    "id": 1, 
+    "question": "What is the HTML tag under which one can write the JavaScript code?", 
+    "options": [
+      {"id": 1, "title": "<javascript>", "correct": false},
+      {"id": 2, "title": "<scripted>", "correct": false},
+      {"id": 3, "title": "<script>", "correct": true},
+      {"id": 4, "title": "<js>", "correct": false}
+      ]
+    },
+    {
+    "id": 2, 
+    "question": "Choose the correct JavaScript syntax to change the content of the following HTML code", 
+    "options": [
+      {"id": 1, "title": "document.getElement(“geek”).innerHTML=”I am a Geek”", "correct": false},
+      {"id": 2, "title": "document.getElementById(“geek”).innerHTML=”I am a Geek", "correct": true},
+      {"id": 3, "title": "document.getId(“geek”)=”I am a Geek”", "correct": false},
+      {"id": 4, "title": "document.getElementById(“geek”).innerHTML=I am a Geek", "correct": false}
+      ]
+    },
+    {
+    "id": 3, 
+    "question": "Which of the following is the correct syntax to display “GeeksforGeeks” in an alert box using JavaScript?", 
+    "options": [
+      {"id": 1, "title": "alertbox(“GeeksforGeeks”)", "correct": false},
+      {"id": 2, "title": "msg(“GeeksforGeeks”)", "correct": false},
+      {"id": 3, "title": "msgbox(“GeeksforGeeks”)", "correct": false},
+      {"id": 4, "title": "alert(“GeeksforGeeks”)", "correct": true}
+    ]
+    },
+    {
+    "id": 4, 
+    "question": "What is the correct syntax for referring to an external script called “geek.js”?", 
+    "options": [
+      {"id": 1, "title": "<script src=”geek.js”>", "correct": true},
+      {"id": 2, "title": "<script href=”geek.js”>", "correct": false},
+      {"id": 3, "title": "<script ref=”geek.js”>", "correct": false},
+      {"id": 4, "title": "<script name=”geek.js”>", "correct": false}
+    ]
+    },
+    {
+    "id": 5, 
+    "question": "The external JavaScript file must contain <script> tag. True or False?", 
+    "options": [
+      {"id": 1, "title": "true", "correct": false},
+      {"id": 2, "title": "false", "correct": true}
+    ]
+    },
+    {
+    "id": 6, 
+    "question": "Predict the output of the following JavaScript code.", 
+    "snippet": "let a = 8 + '8'; document.write(a);",
+    "options": [
+      {"id": 1, "title": "16", "correct": false},
+      {"id": 2, "title": "Compilation Error", "correct": false},
+      {"id": 3, "title": "88", "correct": true},
+      {"id": 4, "title": "Run Time Error", "correct": false}
+      ]
+    },
+    {
+    "id": 7, 
+    "question": "Predict the output of the following JavaScript code", 
+    "snippet": "var a='Welcome';console.log(a.lastIndexOf('G'));",
+    "options": [
+      {"id": 1, "title": "8", "correct": true},
+      {"id": 2, "title": "0", "correct": false},
+      {"id": 3, "title": "9", "correct": false},
+      {"id": 4, "title": "Error", "correct": false}
+      ]
+    },
+    {
+    "id": 8, 
+    "question": "Which of the following is not a reserved word in JavaScript?", 
+    "options": [
+      {"id": 1, "title": "interface", "correct": false},
+      {"id": 2, "title": "throws", "correct": false},
+      {"id": 3, "title": "program", "correct": true},
+      {"id": 4, "title": "short", "correct": false}
+      ]
+    },
+    {
+    "id": 9, 
+    "question": "Predict the output of the following JavaScript code.", 
+    "snippet": "let str = 'Hello world'; console.log(a.substring(4, 5));",
+    "options": [
+      {"id": 1, "title": "sf", "correct": false},
+      {"id": 2, "title": "ks", "correct": false},
+      {"id": 3, "title": "s", "correct": true},
+      {"id": 4, "title": "k", "correct": false}
+      ]
+    },
+    {
+    "id": 10, 
+    "question": "Predict the output of the following JavaScript code", 
+    "snippet": "let x = 5, y = 6; document.write(eval('x*y'));",
+    "options": [
+      {"id": 1, "title": "“30”", "correct": false},
+      {"id": 2, "title": "30", "correct": true},
+      {"id": 3, "title": "5*6", "correct": false},
+      {"id": 4, "title": "“5*6”", "correct": false}
+      ]
+    }
+      ],
+  "answer-key": [
+    {"id": 1, "correctKeyId": 3},
+    {"id": 2, "correctKeyId": 2},
+    {"id": 3, "correctKeyId": 4},
+    {"id": 4, "correctKeyId": 1},
+    {"id": 5, "correctKeyId": 2},
+    {"id": 6, "correctKeyId": 3},
+    {"id": 7, "correctKeyId": 1},
+    {"id": 8, "correctKeyId": 3},
+    {"id": 9, "correctKeyId": 3},
+    {"id": 10, "correctKeyId": 2}
+  ]
+}
