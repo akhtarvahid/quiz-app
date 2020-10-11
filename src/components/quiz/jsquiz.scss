@@ -1,0 +1,23 @@
+.card {
+    .alignHeader {
+      display: flex;
+      justify-content: space-between;
+    }
+    .card-body {
+    .options-text {
+        border: 1px solid rgba(0,0,0,.075);
+        padding: 6px;
+        cursor: pointer;
+        background-color: ghostwhite;
+        &:hover {
+          background-color: #ebebf1;
+        }
+       }
+      .correct {
+        background-color: lightgreen;
+      }
+      .incorrect {
+        background-color: red;
+       }
+  }
+}
