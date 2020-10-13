@@ -3,6 +3,7 @@
     {
     "id": 1, 
     "question": "What is the HTML tag under which one can write the JavaScript code?", 
+    "answerId": 3,
     "options": [
       {"id": 1, "title": "<javascript>", "correct": false},
       {"id": 2, "title": "<scripted>", "correct": false},
@@ -13,9 +14,10 @@
     {
     "id": 2, 
     "question": "Choose the correct JavaScript syntax to change the content of the following HTML code", 
+    "answerId": 2,
     "options": [
       {"id": 1, "title": "document.getElement(“geek”).innerHTML=”I am a Geek”", "correct": false},
-      {"id": 2, "title": "document.getElementById(“geek”).innerHTML=”I am a Geek", "correct": true},
+      {"id": 2, "title": "document.getElementById(“geek”).innerHTML=”I am a Geek”", "correct": true},
       {"id": 3, "title": "document.getId(“geek”)=”I am a Geek”", "correct": false},
       {"id": 4, "title": "document.getElementById(“geek”).innerHTML=I am a Geek", "correct": false}
       ]
@@ -23,6 +25,7 @@
     {
     "id": 3, 
     "question": "Which of the following is the correct syntax to display “GeeksforGeeks” in an alert box using JavaScript?", 
+    "answerId": 4,
     "options": [
       {"id": 1, "title": "alertbox(“GeeksforGeeks”)", "correct": false},
       {"id": 2, "title": "msg(“GeeksforGeeks”)", "correct": false},
@@ -33,6 +36,7 @@
     {
     "id": 4, 
     "question": "What is the correct syntax for referring to an external script called “geek.js”?", 
+    "answerId": 1,
     "options": [
       {"id": 1, "title": "<script src=”geek.js”>", "correct": true},
       {"id": 2, "title": "<script href=”geek.js”>", "correct": false},
@@ -43,6 +47,7 @@
     {
     "id": 5, 
     "question": "The external JavaScript file must contain <script> tag. True or False?", 
+    "answerId": 2,
     "options": [
       {"id": 1, "title": "true", "correct": false},
       {"id": 2, "title": "false", "correct": true}
@@ -51,6 +56,7 @@
     {
     "id": 6, 
     "question": "Predict the output of the following JavaScript code.", 
+    "answerId": 3,
     "snippet": "let a = 8 + '8'; document.write(a);",
     "options": [
       {"id": 1, "title": "16", "correct": false},
@@ -62,6 +68,7 @@
     {
     "id": 7, 
     "question": "Predict the output of the following JavaScript code", 
+    "answerId": 1,
     "snippet": "var a='Welcome';console.log(a.lastIndexOf('G'));",
     "options": [
       {"id": 1, "title": "8", "correct": true},
@@ -72,7 +79,8 @@
     },
     {
     "id": 8, 
-    "question": "Which of the following is not a reserved word in JavaScript?", 
+    "question": "Which of the following is not a reserved word in JavaScript?",
+    "answerId": 3, 
     "options": [
       {"id": 1, "title": "interface", "correct": false},
       {"id": 2, "title": "throws", "correct": false},
@@ -83,6 +91,7 @@
     {
     "id": 9, 
     "question": "Predict the output of the following JavaScript code.", 
+    "answerId": 3,
     "snippet": "let str = 'Hello world'; console.log(a.substring(4, 5));",
     "options": [
       {"id": 1, "title": "sf", "correct": false},
@@ -94,6 +103,7 @@
     {
     "id": 10, 
     "question": "Predict the output of the following JavaScript code", 
+    "answerId": 2,
     "snippet": "let x = 5, y = 6; document.write(eval('x*y'));",
     "options": [
       {"id": 1, "title": "“30”", "correct": false},

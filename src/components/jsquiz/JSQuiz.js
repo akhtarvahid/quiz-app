@@ -7,6 +7,10 @@ let count = 0;
 const JSQuiz = () => {
   const [questions, setQuestions] = useState(data.quiz);
   const [showQuestion, setShowQueston] = useState([questions[0]]);
+  const [saveAnswers, setSaveAnswers] = useState({
+    correct: [],
+    incorrect: []
+  });
   const [selected, setSelected] = useState({
     selectedRow: {},
     selectedAns: {},
@@ -33,8 +37,16 @@ const JSQuiz = () => {
        setShowQueston([nextQuestion])
        count++;
       }
+      
+     const {selectedRow, selectedAns } = selected;
+     selectedRow.userSelectedAns = selectedAns;
+     if(selectedRow.answerId === selectedAns.id) {
+           setSaveAnswers({...saveAnswers, correct: [...saveAnswers.correct ,selectedRow]})
+     } else {
+      setSaveAnswers({...saveAnswers, incorrect: [...saveAnswers.incorrect ,selectedRow]})
+     }     
   }
-  console.log(showQuestion, count)
+  console.log(saveAnswers, data['answer-key']);
   
   return (
     <div className='container mt-5'>
