@@ -46,7 +46,7 @@ const JSQuiz = () => {
       setSaveAnswers({...saveAnswers, incorrect: [...saveAnswers.incorrect ,selectedRow]})
      }     
   }
-  console.log(saveAnswers, data['answer-key']);
+  console.log(saveAnswers, count,  questions.length);
   
   return (
     <div className='container mt-5'>
@@ -58,18 +58,21 @@ const JSQuiz = () => {
              selectAnswer={selectAnswer}
              selected={selected} 
              questions={questions}
+             saveAnswers={saveAnswers}
              />
           </div>  
         )}
         <span className="breadcrumb-item"/>
         <div style={{display: 'flex', justifyContent: "flex-end"}}>
-            {count + 1 < questions.length ?
+            {count + 1 < questions.length &&
                <button type="button" className="my-5 btn btn-info" onClick={showNextQuestion}>
-                Next Question
-               </button>:
-               <button type="button" className="my-5 btn btn-primary">
-                   Submit quiz
+                 Next Question
                </button>
+            }
+            { count + 1 === questions.length &&
+               <button type="button" className="my-5 btn btn-primary">
+               Submit quiz
+             </button>
             }
         </div>
       </div>
@@ -78,8 +81,9 @@ const JSQuiz = () => {
 };
 
 function Cards({question, options, id, 
-  snippet, selectAnswer, selected, questions}){
-  // console.log(question, options, snippet)
+  snippet, selectAnswer, selected, questions, saveAnswers}){
+    const { correct, incorrect } = saveAnswers;
+    let isSelected = (correct && correct.length) || (incorrect && incorrect.length)
   const { selectedAns, selectedRow, disable } = selected;
    return (
     <div className={"my-3 card shadow"}>
@@ -104,7 +108,9 @@ function Cards({question, options, id,
           id === selectedRow.id) ? 'card-text options-text incorrect': 
           'card-text options-text' :
           'card-text options-text'}
-        onClick={()=> selectAnswer(id, option)}>
+          onClick={()=>( Object.keys(selectedAns).length !== 0 &&
+          (option.id !== selectedAns.id && 
+          id === selectedRow.id)) ? null : selectAnswer(id, option)}>
           <span className="badge badge-light text-info">{option.id}  )</span> 
           {option.title}
         </p>
