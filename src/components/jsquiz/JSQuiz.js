@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 import './jsquiz.scss';
 import data from '../../quizdata.json';
 
-let showQuestion = [];
 let count = 0;
 const JSQuiz = () => {
+  let history = useHistory();
   const [questions, setQuestions] = useState(data.quiz);
   const [showQuestion, setShowQueston] = useState([questions[0]]);
   const [saveAnswers, setSaveAnswers] = useState({
@@ -46,6 +47,23 @@ const JSQuiz = () => {
       setSaveAnswers({...saveAnswers, incorrect: [...saveAnswers.incorrect ,selectedRow]})
      }     
   }
+  const submitQuestion = () => {
+    const {selectedRow, selectedAns } = selected;
+    selectedRow.userSelectedAns = selectedAns;
+    let correctUpdate = [...saveAnswers.correct];
+    let incorrectUpdate = [...saveAnswers.incorrect];
+    if(selectedRow.answerId === selectedAns.id) {
+       correctUpdate = [...saveAnswers.correct, selectedRow];
+       setSaveAnswers({...saveAnswers, correct: correctUpdate})
+    } else {
+       incorrectUpdate = [...saveAnswers.incorrect, selectedRow];
+       setSaveAnswers({...saveAnswers, incorrect: incorrectUpdate})
+    }   
+    history.push({
+      pathname: '/results',
+      state: { quizData: {correctUpdate, incorrectUpdate}}
+    });
+  }
   console.log(saveAnswers, count,  questions.length);
   
   return (
@@ -70,7 +88,8 @@ const JSQuiz = () => {
                </button>
             }
             { count + 1 === questions.length &&
-               <button type="button" className="my-5 btn btn-primary">
+               <button type="button" className="my-5 btn btn-primary"
+               onClick={submitQuestion}>
                Submit quiz
              </button>
             }
@@ -81,10 +100,8 @@ const JSQuiz = () => {
 };
 
 function Cards({question, options, id, 
-  snippet, selectAnswer, selected, questions, saveAnswers}){
-    const { correct, incorrect } = saveAnswers;
-    let isSelected = (correct && correct.length) || (incorrect && incorrect.length)
-  const { selectedAns, selectedRow, disable } = selected;
+  snippet, selectAnswer, selected, questions}){
+  const { selectedAns, selectedRow } = selected;
    return (
     <div className={"my-3 card shadow"}>
       <div className="card-header alignHeader">
