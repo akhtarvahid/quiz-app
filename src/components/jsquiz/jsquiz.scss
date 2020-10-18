@@ -2,6 +2,10 @@
     .alignHeader {
       display: flex;
       justify-content: space-between;
+      .quiz-count {
+        color: #24ad0b;
+        font-weight: lighter;
+      }
     }
     .card-body {
     .options-text {
@@ -9,9 +13,6 @@
         padding: 6px;
         cursor: pointer;
         background-color: ghostwhite;
-        // &:hover {
-        //   background-color: #ebebf1;
-        // }
        }
       .correct {
         background-color: lightgreen;

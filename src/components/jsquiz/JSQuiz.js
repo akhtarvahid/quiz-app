@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import './jsquiz.scss';
 import data from '../../quizdata.json';
+import { applyAnswerClick, applyClasses } from '../common';
 
 let count = 0;
 const JSQuiz = () => {
@@ -26,11 +27,6 @@ const JSQuiz = () => {
       selectedRow: getSelectedQ[0],
       disable: true
     });
-
-    // let updateOptions = getSelectedQ[0].options.map(option=> option.id === row.id ? ({...option, correct: true}): option);
-    // console.log(updateOptions);
-    // let updateQuestions = questions.map(q=> q.id === getSelectedQ[0].id ? ({...q, options: updateOptions}): q);
-    // console.log(updateQuestions);
   }
   const showNextQuestion = () => {
       if(count < questions.length) {
@@ -64,7 +60,6 @@ const JSQuiz = () => {
       state: { quizData: {correctUpdate, incorrectUpdate}}
     });
   }
-  console.log(saveAnswers, count,  questions.length);
   
   return (
     <div className='container mt-5'>
@@ -83,7 +78,8 @@ const JSQuiz = () => {
         <span className="breadcrumb-item"/>
         <div style={{display: 'flex', justifyContent: "flex-end"}}>
             {count + 1 < questions.length &&
-               <button type="button" className="my-5 btn btn-info" onClick={showNextQuestion}>
+               <button type="button" className="my-5 btn btn-info" 
+                 onClick={showNextQuestion}>
                  Next Question
                </button>
             }
@@ -106,7 +102,7 @@ function Cards({question, options, id,
     <div className={"my-3 card shadow"}>
       <div className="card-header alignHeader">
        <span className="badge badge-light text-info">{id}.  {question} </span> 
-        <span>{count + 1}/{ questions.length}</span>
+        <span className="quiz-count">{count + 1}/{ questions.length}</span>
       </div>
     <div className="card-body">
       <p className="card-text">
@@ -116,19 +112,9 @@ function Cards({question, options, id,
     <div className="card-body">
       {options.map(option=>
         <p key={option.id} 
-        className={Object.keys(selectedAns).length !== 0 ? 
-          option.correct === true &&
-          option.id === selectedAns.id && 
-          id === selectedRow.id ? 
-          'card-text options-text correct' :
-           (option.id === selectedAns.id && 
-          id === selectedRow.id) ? 'card-text options-text incorrect': 
-          'card-text options-text' :
-          'card-text options-text'}
-          onClick={()=>( Object.keys(selectedAns).length !== 0 &&
-          (option.id !== selectedAns.id && 
-          id === selectedRow.id)) ? null : selectAnswer(id, option)}>
-          <span className="badge badge-light text-info">{option.id}  )</span> 
+          className={applyClasses(selectedAns, selectedRow, option, id, selectAnswer)}
+          onClick={()=> applyAnswerClick(selectedAns,selectedRow, option , id) ? null : selectAnswer(id, option)}>
+          <span className="badge badge-light text-info">{option.id}  -</span> 
           {option.title}
         </p>
         )}
