@@ -1,3 +1,20 @@
+.container{
+  position: relative;
+  .time-counter {
+  width: 40px;
+  height: 40px;
+  background: #f36161f2;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 35px;
+  right: -8px;
+  z-index: 99;
+  font-size: 14px;
+  }
 .card {
     .alignHeader {
       display: flex;
@@ -18,7 +35,12 @@
         background-color: lightgreen;
       }
       .incorrect {
-        background-color: red;
+        background-color: #f36161f2;
+        color: #fff;
        }
   }
+}
+.disable-card {
+  pointer-events:none
+ }
 }

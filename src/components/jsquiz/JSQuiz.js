@@ -7,6 +7,7 @@ import { applyAnswerClick, applyClasses } from '../common';
 let count = 0;
 const JSQuiz = () => {
   let history = useHistory();
+  const [counter, setCounter] = useState(60);
   const [questions, setQuestions] = useState(data.quiz);
   const [showQuestion, setShowQueston] = useState([questions[0]]);
   const [saveAnswers, setSaveAnswers] = useState({
@@ -18,6 +19,10 @@ const JSQuiz = () => {
     selectedAns: {},
     disable: false
   });
+
+  React.useEffect(() => {
+    counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+  }, [counter]);
 
   const selectAnswer = (qNo, row) => {
     let getSelectedQ = questions.filter(question=> question.id===qNo);
@@ -64,6 +69,7 @@ const JSQuiz = () => {
   return (
     <div className='container mt-5'>
       <h1 className='text-primary mb-3'>Javascript quiz</h1>
+      <div className="time-counter">0:{counter}</div>
       <div>
         {showQuestion.map(q=> 
           <div key={q.id}> 
@@ -72,6 +78,7 @@ const JSQuiz = () => {
              selected={selected} 
              questions={questions}
              saveAnswers={saveAnswers}
+             counter={counter}
              />
           </div>  
         )}
@@ -96,25 +103,27 @@ const JSQuiz = () => {
 };
 
 function Cards({question, options, id, 
-  snippet, selectAnswer, selected, questions}){
+  snippet, selectAnswer, selected, questions,
+counter}){
+
   const { selectedAns, selectedRow } = selected;
+  let disablecard = counter === 0 ? 'disable-card': '';
    return (
     <div className={"my-3 card shadow"}>
       <div className="card-header alignHeader">
-       <span className="badge badge-light text-info">{id}.  {question} </span> 
-        <span className="quiz-count">{count + 1}/{ questions.length}</span>
+        <span className="badge badge-light text-info">{count + 1}/{ questions.length} -  {question} </span> 
       </div>
     <div className="card-body">
       <p className="card-text">
       {snippet && <code>{snippet}</code> }
       </p>
     </div>
-    <div className="card-body">
+    <div className={`card-body ${disablecard}`}>
       {options.map(option=>
         <p key={option.id} 
           className={applyClasses(selectedAns, selectedRow, option, id, selectAnswer)}
           onClick={()=> applyAnswerClick(selectedAns,selectedRow, option , id) ? null : selectAnswer(id, option)}>
-          <span className="badge badge-light text-info">{option.id}  -</span> 
+          <span className="text-info">{option.id === 1 ? 'A' : option.id === 2 ? 'B' : option.id === 3 ? 'C': option.id === 4 ? 'D' : ''}  - </span> 
           {option.title}
         </p>
         )}
