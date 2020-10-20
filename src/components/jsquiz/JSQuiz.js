@@ -26,7 +26,6 @@ const JSQuiz = () => {
 
   const selectAnswer = (qNo, row) => {
     let getSelectedQ = questions.filter(question=> question.id===qNo);
-    console.log(getSelectedQ);
     setSelected({...selected, 
       selectedAns: row,
       selectedRow: getSelectedQ[0],
@@ -36,16 +35,22 @@ const JSQuiz = () => {
   const showNextQuestion = () => {
       if(count < questions.length) {
        let nextQuestion = questions[count+1];
-       setShowQueston([nextQuestion])
+       setShowQueston([nextQuestion]);
        count++;
       }
       
      const {selectedRow, selectedAns } = selected;
      selectedRow.userSelectedAns = selectedAns;
      if(selectedRow.answerId === selectedAns.id) {
-           setSaveAnswers({...saveAnswers, correct: [...saveAnswers.correct ,selectedRow]})
+           setSaveAnswers({
+             ...saveAnswers, 
+             correct: [...saveAnswers.correct ,selectedRow]
+          })
      } else {
-      setSaveAnswers({...saveAnswers, incorrect: [...saveAnswers.incorrect ,selectedRow]})
+      setSaveAnswers({
+        ...saveAnswers, 
+        incorrect: [...saveAnswers.incorrect ,selectedRow]
+      })
      }     
   }
   const submitQuestion = () => {
