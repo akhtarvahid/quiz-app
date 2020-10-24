@@ -1,0 +1,28 @@
+
+.container {
+  .scored {
+    display: flex;
+    justify-content: space-between;
+    .percentage {
+      color: #007bff;
+      }
+  }
+ .shadow {
+    position: relative;
+    .checkmark {
+      position: absolute;
+      right: 8px;
+      top: 15px;
+      font-size: 20px;
+      &.incorrect {
+        color: #f36161f2;
+      }
+      &.correct {
+        color: #68f168;
+        font-size: 30px;
+        top: 10px;
+        right: 3px;
+      }
+  }
+ }
+}

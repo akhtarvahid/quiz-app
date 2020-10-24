@@ -1,36 +1,34 @@
 import React, { useState } from 'react';
-import { useHistory } from "react-router-dom";
 import './jsquiz.scss';
 import data from '../../quizdata.json';
-import { applyAnswerClick, applyClasses } from '../common';
+import { applyAnswerClick, applyClasses,
+applyMark, applyListOrdering } from '../common';
+import { useHistory } from 'react-router-dom';
+import { ImCheckmark } from "react-icons/im";
+
 
 let count = 0;
+let status = false;
 const JSQuiz = () => {
-  let history = useHistory();
-  const [counter, setCounter] = useState(60);
-  const [questions, setQuestions] = useState(data.quiz);
+  const history = useHistory();
+  const questions = data && data.quiz;
   const [showQuestion, setShowQueston] = useState([questions[0]]);
   const [saveAnswers, setSaveAnswers] = useState({
-    correct: [],
-    incorrect: []
+    answers: []
   });
   const [selected, setSelected] = useState({
     selectedRow: {},
-    selectedAns: {},
-    disable: false
+    selectedAns: {}
   });
 
-  React.useEffect(() => {
-    counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
-  }, [counter]);
 
   const selectAnswer = (qNo, row) => {
     let getSelectedQ = questions.filter(question=> question.id===qNo);
     setSelected({...selected, 
       selectedAns: row,
-      selectedRow: getSelectedQ[0],
-      disable: true
+      selectedRow: getSelectedQ[0]
     });
+    status = true;
   }
   const showNextQuestion = () => {
       if(count < questions.length) {
@@ -38,43 +36,26 @@ const JSQuiz = () => {
        setShowQueston([nextQuestion]);
        count++;
       }
-      
-     const {selectedRow, selectedAns } = selected;
-     selectedRow.userSelectedAns = selectedAns;
-     if(selectedRow.answerId === selectedAns.id) {
-           setSaveAnswers({
-             ...saveAnswers, 
-             correct: [...saveAnswers.correct ,selectedRow]
-          })
-     } else {
-      setSaveAnswers({
-        ...saveAnswers, 
-        incorrect: [...saveAnswers.incorrect ,selectedRow]
-      })
-     }     
+     const {selectedAns } = selected;
+     setSaveAnswers({answers: [...saveAnswers.answers, selectedAns]});
+     status = false;
   }
   const submitQuestion = () => {
     const {selectedRow, selectedAns } = selected;
     selectedRow.userSelectedAns = selectedAns;
-    let correctUpdate = [...saveAnswers.correct];
-    let incorrectUpdate = [...saveAnswers.incorrect];
-    if(selectedRow.answerId === selectedAns.id) {
-       correctUpdate = [...saveAnswers.correct, selectedRow];
-       setSaveAnswers({...saveAnswers, correct: correctUpdate})
-    } else {
-       incorrectUpdate = [...saveAnswers.incorrect, selectedRow];
-       setSaveAnswers({...saveAnswers, incorrect: incorrectUpdate})
-    }   
+    localStorage.setItem('solved', JSON.stringify([...saveAnswers.answers, selectedAns]))
+    setSaveAnswers({answers: [...saveAnswers.answers, selectedAns]})
+    count++;
     history.push({
       pathname: '/results',
-      state: { quizData: {correctUpdate, incorrectUpdate}}
-    });
+      state: {answers: [...saveAnswers.answers, selectedAns], questions}
+    })
   }
-  
   return (
+    <>
+    
     <div className='container mt-5'>
-      <h1 className='text-primary mb-3'>Javascript quiz</h1>
-      <div className="time-counter">0:{counter}</div>
+      <h1 className='text-primary mb-3'>Javascript Quiz</h1>
       <div>
         {showQuestion.map(q=> 
           <div key={q.id}> 
@@ -83,53 +64,56 @@ const JSQuiz = () => {
              selected={selected} 
              questions={questions}
              saveAnswers={saveAnswers}
-             counter={counter}
              />
           </div>  
         )}
         <span className="breadcrumb-item"/>
-        <div style={{display: 'flex', justifyContent: "flex-end"}}>
+        <div className="buttons">
+            <div>*questions are mandatory</div>
             {count + 1 < questions.length &&
-               <button type="button" className="my-5 btn btn-info" 
-                 onClick={showNextQuestion}>
+               <button type="button" onClick={showNextQuestion}
+                 className={status ? 'my-5 btn btn-info' : 'my-5 btn btn-info disabled'}>
                  Next Question
                </button>
             }
             { count + 1 === questions.length &&
-               <button type="button" className="my-5 btn btn-primary"
+               <button type="button" className={status ? 'my-5 btn btn-primary' : 'my-5 btn btn-primary disabled'}
                onClick={submitQuestion}>
-               Submit quiz
+               Finish quiz
              </button>
             }
         </div>
       </div>
     </div>
+    </>
   );
 };
 
 function Cards({question, options, id, 
   snippet, selectAnswer, selected, questions,
-counter}){
+}){
 
   const { selectedAns, selectedRow } = selected;
-  let disablecard = counter === 0 ? 'disable-card': '';
    return (
-    <div className={"my-3 card shadow"}>
+    <div className="my-4 card shadow">
       <div className="card-header alignHeader">
-        <span className="badge badge-light text-info">{count + 1}/{ questions.length} -  {question} </span> 
+      <span className="quiz-count">{count + 1}/
+       <span>{ questions.length }.</span> 
+      </span> {question} 
       </div>
     <div className="card-body">
       <p className="card-text">
       {snippet && <code>{snippet}</code> }
       </p>
     </div>
-    <div className={`card-body ${disablecard}`}>
+    <div className="card-body">
       {options.map(option=>
         <p key={option.id} 
           className={applyClasses(selectedAns, selectedRow, option, id, selectAnswer)}
           onClick={()=> applyAnswerClick(selectedAns,selectedRow, option , id) ? null : selectAnswer(id, option)}>
-          <span className="text-info">{option.id === 1 ? 'A' : option.id === 2 ? 'B' : option.id === 3 ? 'C': option.id === 4 ? 'D' : ''}  - </span> 
-          {option.title}
+          <span className="text-info">{applyListOrdering(option)}  - {option.title}</span> 
+          {console.log(applyMark(selectedAns,selectedRow,option,id))}
+          {applyMark(selectedAns,selectedRow,option,id) && <ImCheckmark />}
         </p>
         )}
     </div>

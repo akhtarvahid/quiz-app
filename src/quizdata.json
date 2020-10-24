@@ -5,10 +5,10 @@
     "question": "What is the HTML tag under which one can write the JavaScript code?", 
     "answerId": 3,
     "options": [
-      {"id": 1, "title": "<javascript>", "correct": false},
-      {"id": 2, "title": "<scripted>", "correct": false},
-      {"id": 3, "title": "<script>", "correct": true},
-      {"id": 4, "title": "<js>", "correct": false}
+      {"id": 1, "title": "<javascript>", "isCorrect": false},
+      {"id": 2, "title": "<scripted>", "isCorrect": false},
+      {"id": 3, "title": "<script>", "isCorrect": false},
+      {"id": 4, "title": "<js>", "isCorrect": false}
       ]
     },
     {
@@ -16,10 +16,10 @@
     "question": "Choose the correct JavaScript syntax to change the content of the following HTML code", 
     "answerId": 2,
     "options": [
-      {"id": 1, "title": "document.getElement(“geek”).innerHTML=”I am a Geek”", "correct": false},
-      {"id": 2, "title": "document.getElementById(“geek”).innerHTML=”I am a Geek”", "correct": true},
-      {"id": 3, "title": "document.getId(“geek”)=”I am a Geek”", "correct": false},
-      {"id": 4, "title": "document.getElementById(“geek”).innerHTML=I am a Geek", "correct": false}
+      {"id": 1, "title": "document.getElement(“geek”).innerHTML=”I am a Geek”", "isCorrect": false},
+      {"id": 2, "title": "document.getElementById(“geek”).innerHTML=”I am a Geek”", "isCorrect": false},
+      {"id": 3, "title": "document.getId(“geek”)=”I am a Geek”", "isCorrect": false},
+      {"id": 4, "title": "document.getElementById(“geek”).innerHTML=I am a Geek", "isCorrect": false}
       ]
     },
     {
@@ -27,10 +27,10 @@
     "question": "Which of the following is the correct syntax to display “GeeksforGeeks” in an alert box using JavaScript?", 
     "answerId": 4,
     "options": [
-      {"id": 1, "title": "alertbox(“GeeksforGeeks”)", "correct": false},
-      {"id": 2, "title": "msg(“GeeksforGeeks”)", "correct": false},
-      {"id": 3, "title": "msgbox(“GeeksforGeeks”)", "correct": false},
-      {"id": 4, "title": "alert(“GeeksforGeeks”)", "correct": true}
+      {"id": 1, "title": "alertbox(“GeeksforGeeks”)", "isCorrect": false},
+      {"id": 2, "title": "msg(“GeeksforGeeks”)", "isCorrect": false},
+      {"id": 3, "title": "msgbox(“GeeksforGeeks”)", "isCorrect": false},
+      {"id": 4, "title": "alert(“GeeksforGeeks”)", "isCorrect": false}
     ]
     },
     {
@@ -38,10 +38,10 @@
     "question": "What is the correct syntax for referring to an external script called “geek.js”?", 
     "answerId": 1,
     "options": [
-      {"id": 1, "title": "<script src=”geek.js”>", "correct": true},
-      {"id": 2, "title": "<script href=”geek.js”>", "correct": false},
-      {"id": 3, "title": "<script ref=”geek.js”>", "correct": false},
-      {"id": 4, "title": "<script name=”geek.js”>", "correct": false}
+      {"id": 1, "title": "<script src=”geek.js”>", "isCorrect": false},
+      {"id": 2, "title": "<script href=”geek.js”>", "isCorrect": false},
+      {"id": 3, "title": "<script ref=”geek.js”>", "isCorrect": false},
+      {"id": 4, "title": "<script name=”geek.js”>", "isCorrect": false}
     ]
     },
     {
@@ -49,8 +49,8 @@
     "question": "The external JavaScript file must contain <script> tag. True or False?", 
     "answerId": 2,
     "options": [
-      {"id": 1, "title": "true", "correct": false},
-      {"id": 2, "title": "false", "correct": true}
+      {"id": 1, "title": "true", "isCorrect": false},
+      {"id": 2, "title": "false", "isCorrect": false}
     ]
     },
     {
@@ -59,10 +59,10 @@
     "answerId": 3,
     "snippet": "let a = 8 + '8'; document.write(a);",
     "options": [
-      {"id": 1, "title": "16", "correct": false},
-      {"id": 2, "title": "Compilation Error", "correct": false},
-      {"id": 3, "title": "88", "correct": true},
-      {"id": 4, "title": "Run Time Error", "correct": false}
+      {"id": 1, "title": "16", "isCorrect": false},
+      {"id": 2, "title": "Compilation Error", "isCorrect": false},
+      {"id": 3, "title": "88", "isCorrect": false},
+      {"id": 4, "title": "Run Time Error", "isCorrect": false}
       ]
     },
     {
@@ -71,10 +71,10 @@
     "answerId": 1,
     "snippet": "var a='Welcome';console.log(a.lastIndexOf('G'));",
     "options": [
-      {"id": 1, "title": "8", "correct": true},
-      {"id": 2, "title": "0", "correct": false},
-      {"id": 3, "title": "9", "correct": false},
-      {"id": 4, "title": "Error", "correct": false}
+      {"id": 1, "title": "8", "isCorrect": false},
+      {"id": 2, "title": "0", "isCorrect": false},
+      {"id": 3, "title": "9", "isCorrect": false},
+      {"id": 4, "title": "Error", "isCorrect": false}
       ]
     },
     {
@@ -82,10 +82,10 @@
     "question": "Which of the following is not a reserved word in JavaScript?",
     "answerId": 3, 
     "options": [
-      {"id": 1, "title": "interface", "correct": false},
-      {"id": 2, "title": "throws", "correct": false},
-      {"id": 3, "title": "program", "correct": true},
-      {"id": 4, "title": "short", "correct": false}
+      {"id": 1, "title": "interface", "isCorrect": false},
+      {"id": 2, "title": "throws", "isCorrect": false},
+      {"id": 3, "title": "program", "isCorrect": false},
+      {"id": 4, "title": "short", "isCorrect": false}
       ]
     },
     {
@@ -94,10 +94,10 @@
     "answerId": 3,
     "snippet": "let str = 'Hello world'; console.log(a.substring(4, 5));",
     "options": [
-      {"id": 1, "title": "sf", "correct": false},
-      {"id": 2, "title": "ks", "correct": false},
-      {"id": 3, "title": "s", "correct": true},
-      {"id": 4, "title": "k", "correct": false}
+      {"id": 1, "title": "sf", "isCorrect": false},
+      {"id": 2, "title": "ks", "isCorrect": false},
+      {"id": 3, "title": "s", "isCorrect": false},
+      {"id": 4, "title": "k", "isCorrect": false}
       ]
     },
     {
@@ -106,10 +106,10 @@
     "answerId": 2,
     "snippet": "let x = 5, y = 6; document.write(eval('x*y'));",
     "options": [
-      {"id": 1, "title": "“30”", "correct": false},
-      {"id": 2, "title": "30", "correct": true},
-      {"id": 3, "title": "5*6", "correct": false},
-      {"id": 4, "title": "“5*6”", "correct": false}
+      {"id": 1, "title": "“30”", "isCorrect": false},
+      {"id": 2, "title": "30", "isCorrect": false},
+      {"id": 3, "title": "5*6", "isCorrect": false},
+      {"id": 4, "title": "“5*6”", "isCorrect": false}
       ]
     }
       ],
