@@ -47,7 +47,10 @@ const JSQuiz = () => {
     setSaveAnswers({answers: [...saveAnswers.answers, selectedAns]})
     count++;
     history('/results',
-      {answers: [...saveAnswers.answers, selectedAns], questions}
+      { state: {
+         answers: [...saveAnswers.answers, selectedAns], questions
+        }
+      }
     )
   }
   return (
