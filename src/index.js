@@ -1,15 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter as Router, 
-    Switch, Route} from 'react-router-dom';
+import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import JSQuiz from './components/jsquiz/JSQuiz';
 import ResultQuiz from './components/resultquiz/ResultQuiz';
 
-ReactDOM.render(
- <Router>
-    <Switch>
-      <Route exact path="/" component={JSQuiz} />
-      <Route exact path="/results" component={ResultQuiz} />
-    </Switch>
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+   <Router>
+    <Routes>
+      <Route exact path="/" element={<JSQuiz />} />
+      <Route exact path="/results" element={<ResultQuiz />} />
+    </Routes>
   </Router>
-, document.getElementById('root'));
+  </React.StrictMode>
+);

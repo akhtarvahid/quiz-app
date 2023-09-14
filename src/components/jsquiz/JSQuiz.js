@@ -3,14 +3,14 @@ import './jsquiz.scss';
 import data from '../../quizdata.json';
 import { applyAnswerClick, applyClasses,
 applyMark, applyListOrdering } from '../common';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ImCheckmark } from "react-icons/im";
 
 
 let count = 0;
 let status = false;
 const JSQuiz = () => {
-  const history = useHistory();
+  const history = useNavigate();
   const questions = data && data.quiz;
   const [showQuestion, setShowQueston] = useState([questions[0]]);
   const [saveAnswers, setSaveAnswers] = useState({
@@ -46,10 +46,9 @@ const JSQuiz = () => {
     localStorage.setItem('solved', JSON.stringify([...saveAnswers.answers, selectedAns]))
     setSaveAnswers({answers: [...saveAnswers.answers, selectedAns]})
     count++;
-    history.push({
-      pathname: '/results',
-      state: {answers: [...saveAnswers.answers, selectedAns], questions}
-    })
+    history('/results',
+      {answers: [...saveAnswers.answers, selectedAns], questions}
+    )
   }
   return (
     <>
@@ -112,7 +111,6 @@ function Cards({question, options, id,
           className={applyClasses(selectedAns, selectedRow, option, id, selectAnswer)}
           onClick={()=> applyAnswerClick(selectedAns,selectedRow, option , id) ? null : selectAnswer(id, option)}>
           <span className="text-info">{applyListOrdering(option)}  - {option.title}</span> 
-          {console.log(applyMark(selectedAns,selectedRow,option,id))}
           {applyMark(selectedAns,selectedRow,option,id) && <ImCheckmark />}
         </p>
         )}
