@@ -1,13 +1,41 @@
-# Simple Quiz App
+# Quiz Application
 
-> Quiz application using React with Hooks
+> Quiz application using React, React router and redux-toolkit.
 
-## Available Scripts
+## Follow to run application
 
-In the project directory, you can run:
-> git clone https://github.com/akhtarvahid/quiz-app.git
-> 
-> cd quiz-app
-### `npm install`
+Clone repository locally by running command
 
-### `npm start`
+```Js
+git clone https://github.com/akhtarvahid/quiz-app.git
+```
+
+Navigate to the app folder -> `quiz-app` .asdf
+
+```Js
+cd quiz-app
+```
+
+Install dependencies
+
+```Js
+npm install
+```
+
+Start application 
+
+```Js
+npm start
+```
+
+
+## Demo
+
+*Quiz*
+<img src="./demo/Quiz.PNG" alt="demo" />
+
+*Answer Selected*
+<img src="./demo/CorrectAnswerSelected.PNG" alt="demo" />
+
+*Result*
+<img src="./demo/QuizResult.PNG" alt="demo" />
