@@ -30,6 +30,7 @@ npm start
 
 
 ## Demo
+<a href="https://js-quizz-app.netlify.app/" target="_blank">Live</a>
 
 *Quiz*
 <img src="./demo/Quiz.PNG" alt="demo" />
