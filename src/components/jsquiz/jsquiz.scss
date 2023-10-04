@@ -1,4 +1,4 @@
-.container{
+.container {
   position: relative;
   width: 70%;
   .buttons {
@@ -19,13 +19,18 @@
     }
   }
 .card {
+   &-header {
+    background-color: #0752a5;
+   }
     .alignHeader {
       display: flex;
-      color: darkcyan;
+      color: #fff;
+      align-items: center;
       .quiz-count {
-        color: darkcyan;
+        color: #ffd495;
         font-weight: bold;
         margin-right: 8px;
+        font-size: 20px;
         span {
           font-weight: lighter;
         }

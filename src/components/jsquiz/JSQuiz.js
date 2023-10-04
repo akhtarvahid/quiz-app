@@ -13,7 +13,7 @@ const JSQuiz = () => {
   const dispatch = useDispatch();
   const questions = quiz !== null ? quiz?.quiz : data.quiz;
 
-  const [showQuestion, setShowQueston] = useState([questions[0]]);
+  const [showQuestion, setShowQuestion] = useState([questions[0]]);
 
   let [count, setCount] = useState(0);
   const [saveAnswers, setSaveAnswers] = useState({
@@ -40,7 +40,7 @@ const JSQuiz = () => {
   const showNextQuestion = () => {
     if (count < questions.length) {
       let nextQuestion = questions[count + 1];
-      setShowQueston([nextQuestion]);
+      setShowQuestion([nextQuestion]);
       setCount(++count);
     }
     const { selectedAns } = selected;
